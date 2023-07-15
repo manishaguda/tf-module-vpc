@@ -98,6 +98,7 @@ resource "aws_nat_gateway" "ngw" {
 }
 
 
+
 # Create ec2
 #
 #data "aws_ami" "centos8" {
