@@ -54,6 +54,12 @@ resource "aws_internet_gateway" "igw" {
 
 }
 
+resource "aws_route_table_association" "public-rt-assoc" {
+  count          = length(aws_subnet.public)
+  vpc_id         = aws_subnet.public.*.id[count.index]
+  route_table_id = aws_route_table.public.id
+}
+
 # Create ec2
 #
 #data "aws_ami" "centos8" {
@@ -66,6 +72,7 @@ resource "aws_internet_gateway" "igw" {
 #  ami           = data.aws_ami.centos8.id
 #  instance_type = "t3.micro"
 #  vpc_security_group_ids = [aws_security_group.allow_tls.id]
+#  subnet_id = aws_vpc.main.id
 #
 #  tags = {
 #    Name = "test-centos8"
