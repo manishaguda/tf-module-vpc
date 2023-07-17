@@ -11,6 +11,7 @@ resource "aws_subnet" "public" {
   count  = length(var.public_subnets_cidr)
   vpc_id = aws_vpc.main.id
   cidr_block = var.public_subnets_cidr[count.index]
+  availability_zones = var.availability_zones[count.index]
 
   tags = merge(
     local.common_tags,
@@ -23,6 +24,7 @@ resource "aws_subnet" "private" {
   count  = length(var.private_subnets_cidr)
   vpc_id = aws_vpc.main.id
   cidr_block = var.private_subnets_cidr[count.index]
+  availability_zones = var.availability_zones[count.index]
 
   tags = merge(
     local.common_tags,
@@ -126,8 +128,8 @@ resource "aws_route_table_association" "private-rt-assoc" {
 }
 
 resource "aws_route" "r" {
-  route_table_id = data.aws_vpc.default.main_route_table_id
-  destination_cidr_block = var.cidr_block
+  route_table_id            = data.aws_vpc.default.main_route_table_id
+  destination_cidr_block    = var.cidr_block
   vpc_peering_connection_id = aws_vpc_peering_connection.peer.id
 }
 
@@ -160,6 +162,14 @@ resource "aws_security_group" "allow_tls" {
     description      = "TLS from VPC"
     from_port        = 22
     to_port          = 22
+    protocol         = "tcp"
+    cidr_blocks      = ["0.0.0.0/0"]
+  }
+
+  ingress {
+    description      = "HTTP"
+    from_port        = 80
+    to_port          = 80
     protocol         = "tcp"
     cidr_blocks      = ["0.0.0.0/0"]
   }
