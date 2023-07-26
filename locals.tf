@@ -3,6 +3,6 @@ locals {
     env           = var.env
     project       = "roboshop"
     business_unit = "ecommerce"
-    owner         = "ecommers-robot"
+    owner         = "ecommerce-robot"
   }
 }
