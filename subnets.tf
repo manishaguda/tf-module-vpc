@@ -34,4 +34,4 @@ module "public_subnets" {
 #  tags                      = local.common_tags
 #  gateway_id                = aws_internet_gateway.gw.id
 #  nat_gw_id                 = aws_nat_gateway.ngw.id
-}
+#}
