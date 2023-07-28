@@ -39,13 +39,13 @@ resource "aws_eip" "ngw-eip" {
 }
 
 
-resource "aws_nat_gateway" "ngw" {
-  allocation_id = aws_eip.ngw-eip.id
-  subnet_id     = lookup(lookup(module.public_subnets, "public", null), "subnet_ids", null)[0]
-
-  tags = merge(
-    local.common_tags,
-    { Name = "${var.env}-ngw" }
-  )
-
-}
+#resource "aws_nat_gateway" "ngw" {
+#  allocation_id = aws_eip.ngw-eip.id
+#  subnet_id     = lookup(lookup(module.public_subnets, "public", null), "subnet_ids", null)[0]
+#
+#  tags = merge(
+#    local.common_tags,
+#    { Name = "${var.env}-ngw" }
+#  )
+#
+#}
