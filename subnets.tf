@@ -25,7 +25,7 @@ module "private_subnets" {
 
   for_each          = var.private_subnets
   cidr_block        = each.value.cidr_block
-  name              = each.value.name
+#  name              = each.value.value
 #  internet_gw       = lookup(each.value, "internet_gw", false)
 #  nat_gw            = lookup(each.value, "nat_gw", false)
 
