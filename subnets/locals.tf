@@ -1,3 +1,3 @@
-#locals {
-#  common_tags = var.tags
-#}
+locals {
+  common_tags = var.tags
+}
