@@ -10,4 +10,6 @@ output "public_subnet_ids" {
   value = module.public_subnets
 }
 
-
+output "" {
+  value = ""
+}
