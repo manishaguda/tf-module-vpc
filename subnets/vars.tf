@@ -10,9 +10,7 @@ variable "tags" {}
 variable "internet_gw" {}
 #variable "nat_gw" {}
 
-#variable "gateway_id" {
-#  default = null
-#}
+variable "gateway_id" {}
 #variable "nat_gw_id" {
 #  default = null
 #}
