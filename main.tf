@@ -34,9 +34,9 @@ resource "aws_internet_gateway" "gw" {
 }
 
 
-resource "aws_eip" "ngw-eip" {
-  vpc = true
-}
+#resource "aws_eip" "ngw-eip" {
+#  vpc = true
+#}
 
 #resource "aws_nat_gateway" "ngw" {
 #  allocation_id = aws_eip.ngw-eip.id
